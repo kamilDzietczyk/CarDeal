@@ -1,0 +1,21 @@
+.container{
+    margin-top: 3%;
+    width: 50%;
+    height: 50%;
+}
+table .btn{
+    margin: 5px;
+}
+
+th, td {
+    text-align: center;
+}
+.border{
+    padding: 10px;
+  }
+  .btn{
+    margin-right: 10px;
+  }
+  .fa {
+    margin-right: 10px;
+  }

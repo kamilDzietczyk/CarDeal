@@ -1,0 +1,12 @@
+.container{
+    margin-top:15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container div div a{
+    width: 120px;
+    height: 80px;
+};
+
