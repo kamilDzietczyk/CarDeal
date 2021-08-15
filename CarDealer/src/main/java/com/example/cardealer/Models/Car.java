@@ -17,5 +17,44 @@ public class Car {
     String model;
     int car_price;
     int year_of_prod;
-    int purchase;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getCar_price() {
+        return car_price;
+    }
+
+    public void setCar_price(int car_price) {
+        this.car_price = car_price;
+    }
+
+    public int getYear_of_prod() {
+        return year_of_prod;
+    }
+
+    public void setYear_of_prod(int year_of_prod) {
+        this.year_of_prod = year_of_prod;
+    }
 }

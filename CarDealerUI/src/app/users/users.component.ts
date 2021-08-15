@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+
 import { ModalDismissReasons,NgbModal } from '@ng-bootstrap/ng-bootstrap'; 
 import { FormBuilder, FormGroup, NgForm} from '@angular/forms';
 
@@ -106,9 +107,10 @@ export class UsersComponent implements OnInit {
   login: User.login,
   password: User.password,
   email: User.email
-});
-}
-onSave() {
+  });
+  }
+  
+  onSave() {
   const editURL = 'http://localhost:8080//users/' + this.editForm.value.id + '/edit';
   console.log(this.editForm.value);
   this.httpClient.put(editURL, this.editForm.value)
@@ -116,9 +118,9 @@ onSave() {
       this.ngOnInit();
       this.modalService.dismissAll();
     });
-}
+  }
 
-openDelete(targetModal, User: user) {
+  openDelete(targetModal, User: user) {
   this.modalService.open(targetModal, {
    centered: true,
    backdrop: 'static',
@@ -130,10 +132,10 @@ openDelete(targetModal, User: user) {
   login: User.login,
   password: User.password,
   email: User.email
-});
-}
+  });
+  }
 
-onDelete() {
+  onDelete() {
   const deleteURL = 'http://localhost:8080/users/' + this.deleteId.value.id + '/delete';
   console.log(deleteURL);
   this.httpClient.delete(deleteURL)
