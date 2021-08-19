@@ -25,12 +25,13 @@ export class UsersComponent implements OnInit {
   User: user[];
   closeResult: string;
   editForm: FormGroup;
-  deleteId: FormGroup
+  deleteId: FormGroup;
+  message: string;
+  tempArr: string[] = [];
 
   constructor(private httpClient:HttpClient, 
               private modalService: NgbModal,
               private formBuilder: FormBuilder) {
-    
    }
 
   ngOnInit(): void {
@@ -50,7 +51,6 @@ export class UsersComponent implements OnInit {
   getUsers(){
     this.httpClient.get<any>('http://localhost:8080/users').subscribe(
       response => {
-        console.log(response);
         this.User = response;
       }
     );
@@ -75,12 +75,27 @@ export class UsersComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    const url = 'http://localhost:8080//users/add';
+    var count = 0
+    for(var u of this.User ){
+      if(f.value.name === u.name && f.value.email === u.email ){
+        count ++
+        this.message = "User exist"
+      }else if(f.value.email === u.email){
+        count ++
+        this.message = "Email exist"
+      }
+    }
+    if(count>0){
+      this.modalService.dismissAll();
+    }else{
+      const url = 'http://localhost:8080//users/add';
     this.httpClient.post(url, f.value)
       .subscribe((result) => {
         this.ngOnInit(); 
       });
-    this.modalService.dismissAll(); 
+      this.message = ""
+      this.modalService.dismissAll();
+    }
   }
 
   openDetails(targetModal, User: user) {
@@ -111,8 +126,8 @@ export class UsersComponent implements OnInit {
   }
   
   onSave() {
+    console.log("Jaszczur fajo");   
   const editURL = 'http://localhost:8080//users/' + this.editForm.value.id + '/edit';
-  console.log(this.editForm.value);
   this.httpClient.put(editURL, this.editForm.value)
     .subscribe((results) => {
       this.ngOnInit();
@@ -137,7 +152,6 @@ export class UsersComponent implements OnInit {
 
   onDelete() {
   const deleteURL = 'http://localhost:8080/users/' + this.deleteId.value.id + '/delete';
-  console.log(deleteURL);
   this.httpClient.delete(deleteURL)
     .subscribe((results) => {
       this.ngOnInit();

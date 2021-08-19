@@ -1,10 +1,8 @@
-<!-- Button -->
 <div class="border">
     <button class="btn btn-md btn-outline-primary" (click)="open(content)">
       <i class="fa fa-user"></i>New User</button>
 </div>
 
-<!-- Table -->
 <div class="container">
     <table class="table table-bordered table-striped">
       <thead>
@@ -27,10 +25,13 @@
       </tr>
       </tbody>
     </table>
+    <div style="text-align: center;">
+      <label>{{message}}</label>
+    </div>
 </div>
 
 
-  <ng-template #content let-modal>
+  <ng-template #ngNativeValidate  #content let-modal>
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">New User</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -42,7 +43,7 @@
         <div class="form-group">
           <label for="name">Name</label>
           <div class="input-group">
-            <input id="name" class="form-control" name="name" ngModel>
+            <input id="name" class="form-control" name="name" type="text"  maxlength="10" required ngModel>
           </div>
         </div>
         <div class="form-group">

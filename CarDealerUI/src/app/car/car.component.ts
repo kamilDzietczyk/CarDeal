@@ -9,7 +9,8 @@ export class car {
     public brand: string,
     public model: string,
     public car_price: number,
-    public year_of_prod: number
+    public year_of_prod: number,
+    public vin_number: number
   ){}
 }
 
@@ -32,18 +33,21 @@ export class CarComponent implements OnInit {
   ngOnInit(): void {
     this.getCar();
     this.editForm = this.formBuilder.group({
-    id: [],
-    brand: [],
-    model: [],
-    car_price: [],
-    year_of_prod: []
+    id: [''],
+    brand: [''],
+    model: [''],
+    car_price: [''],
+    year_of_prod: [''],
+    vin_number: ['']
     } );
+    this.deleteId = this.formBuilder.group({
+      id: [''],
+    })
   }
 
   getCar(){
     this.httpClient.get<any>('http://localhost:8080/car').subscribe(
       response => {
-        console.log(response);
         this.Car = response;
       }
     );
@@ -86,6 +90,7 @@ export class CarComponent implements OnInit {
     document.getElementById("mod")?.setAttribute('value', Car.model);
     document.getElementById("pri")?.setAttribute('value', Car.car_price.toString());
     document.getElementById("yea")?.setAttribute('value', Car.year_of_prod.toString());
+    document.getElementById("vin")?.setAttribute('value', Car.vin_number.toString());
  }
 
  openEdit(targetModal, Car: car) {
@@ -99,13 +104,13 @@ export class CarComponent implements OnInit {
   brand: Car.brand,
   model: Car.model,
   car_price: Car.car_price,
-  year_of_prod: Car.year_of_prod
+  year_of_prod: Car.year_of_prod,
+  vin_number: Car.vin_number
   });
   }
   
   onSave() {
   const editURL = 'http://localhost:8080/car/' + this.editForm.value.id + '/edit';
-  console.log(this.editForm.value);
   this.httpClient.put(editURL, this.editForm.value)
     .subscribe((results) => {
       this.ngOnInit();
@@ -113,27 +118,25 @@ export class CarComponent implements OnInit {
     });
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  openDelete(targetModal, Car: car) {
+    this.modalService.open(targetModal, {
+     centered: true,
+     backdrop: 'static',
+     size: 'lg'
+   });
+   this.deleteId.patchValue( {
+    id: Car.id,
+    });
+    }
+  
+    onDelete() {
+    const deleteURL = 'http://localhost:8080/car/' + this.deleteId.value.id + '/delete';
+    this.httpClient.delete(deleteURL)
+      .subscribe((results) => {
+        this.ngOnInit();
+        this.modalService.dismissAll();
+      });
+    }
 }
-
 
 

@@ -1,1 +1,31 @@
-<p>realized works!</p>
+<div class="container">
+    <table style="margin-top: 5%; text-align: center;"  class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Price</th>
+        <th>Year Of Prod</th>
+        <th>Date Sale</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let car of Car">
+        <td><span>{{car.brand}}</span></td>
+        <td><span>{{car.model}}</span></td>
+        <td><span>{{car.car_price}}</span></td>
+        <td><span>{{car.year_of_prod}}</span></td>
+        <td><span>{{car.date_sale}}</span></td>
+        
+        <td>
+          <button class="btn btn-sm btn-info">
+            <i class="fa fa-search"></i>Details</button>
+          <button class="btn btn-sm btn-warning">
+            <i class="fa fa-edit"></i>Edit</button>
+          <button class="btn btn-sm btn-danger">
+            <i class="fa fa-remove"></i>Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div> 

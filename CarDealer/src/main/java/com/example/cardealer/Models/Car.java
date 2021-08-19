@@ -17,6 +17,15 @@ public class Car {
     String model;
     int car_price;
     int year_of_prod;
+    int vin_number;
+
+    public int getVin_number() {
+        return vin_number;
+    }
+
+    public void setVin_number(int vin_number) {
+        this.vin_number = vin_number;
+    }
 
     public int getId() {
         return id;
