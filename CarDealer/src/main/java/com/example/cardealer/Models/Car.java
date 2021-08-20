@@ -15,15 +15,31 @@ public class Car {
     int id;
     String brand;
     String model;
-    int car_price;
-    int year_of_prod;
-    int vin_number;
+    long car_price;
+    long year_of_prod;
+    long vin_number;
 
-    public int getVin_number() {
+    public long getCar_price() {
+        return car_price;
+    }
+
+    public void setCar_price(long car_price) {
+        this.car_price = car_price;
+    }
+
+    public long getYear_of_prod() {
+        return year_of_prod;
+    }
+
+    public void setYear_of_prod(long year_of_prod) {
+        this.year_of_prod = year_of_prod;
+    }
+
+    public long getVin_number() {
         return vin_number;
     }
 
-    public void setVin_number(int vin_number) {
+    public void setVin_number(long vin_number) {
         this.vin_number = vin_number;
     }
 
@@ -49,21 +65,5 @@ public class Car {
 
     public void setModel(String model) {
         this.model = model;
-    }
-
-    public int getCar_price() {
-        return car_price;
-    }
-
-    public void setCar_price(int car_price) {
-        this.car_price = car_price;
-    }
-
-    public int getYear_of_prod() {
-        return year_of_prod;
-    }
-
-    public void setYear_of_prod(int year_of_prod) {
-        this.year_of_prod = year_of_prod;
     }
 }

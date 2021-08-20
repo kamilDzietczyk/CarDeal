@@ -24,7 +24,8 @@ export class CarComponent implements OnInit {
   Car: car[];
   closeResult: string;
   editForm: FormGroup;
-  deleteId: FormGroup
+  deleteId: FormGroup;
+  message: string=" "
 
   constructor(private httpClient:HttpClient, 
               private modalService: NgbModal,
@@ -72,14 +73,25 @@ export class CarComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    const url = 'http://localhost:8080/car/add';
-    this.httpClient.post(url, f.value)
-      .subscribe((result) => {
-        this.ngOnInit(); 
-      });
-    this.modalService.dismissAll(); 
+    var count =0;
+    for(var c of this.Car){
+      if(f.value.vin_number === c.vin_number.toString()){
+        count ++
+        this.message = "Car exist";
+      }
+    }
+    if(count>0){
+      this.modalService.dismissAll();
+    }else{
+      const url = 'http://localhost:8080/car/add';
+      this.httpClient.post(url, f.value)
+        .subscribe((result) => {
+          this.ngOnInit(); 
+        }); 
+      this.message = ""
+      this.modalService.dismissAll();
+    }
   }
-
   openDetails(targetModal, Car: car) {
     this.modalService.open(targetModal, {
      centered: true,

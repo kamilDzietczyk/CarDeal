@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
 import { CarComponent } from './car/car.component';
 import { RealizedComponent } from './realized/realized.component';
+import { LoginPanelComponent } from './login-panel/login-panel.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { RealizedComponent } from './realized/realized.component';
     HomeComponent,
     UsersComponent,
     CarComponent,
-    RealizedComponent
+    RealizedComponent,
+    LoginPanelComponent
   ],
   imports: [
     BrowserModule,

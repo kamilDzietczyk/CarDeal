@@ -35,45 +35,58 @@
     </tr>
     </tbody>
   </table>
+  <div style="text-align: center; background-color: red;" >
+    <h1>{{message}}</h1>
+  </div>
+  
 </div> 
 
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">New User</h4>
+    <h4 class="modal-title" id="modal-basic-title">New Car</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" ngNativeValidate>
       <div class="form-group">
         <label for="brand">Brand</label>
         <div class="input-group">
-          <input id="brand" class="form-control" name="brand" ngModel>
+          <input id="brand" class="form-control" name="brand" ngModel maxlength="20" type="text" required
+          required placeholder="Enter brand" oninvalid="this.setCustomValidity('The field cannot be empty')"
+          oninput="this.setCustomValidity('')">
         </div>
       </div>
       <div class="form-group">
         <label for="model">Model</label>
         <div class="input-group">
-          <input id="model" class="form-control" name="model" ngModel >
+          <input id="model" class="form-control" name="model" ngModel maxlength="20" type="text" required
+          required placeholder="Enter model" oninvalid="this.setCustomValidity('The field cannot be empty')"
+          oninput="this.setCustomValidity('')" >
         </div>
       </div>
       <div class="form-group">
         <label for="car_price">Price</label>
         <div class="input-group">
-          <input id="car_price" class="form-control" name="car_price" ngModel >
+          <input id="car_price" class="form-control" name="car_price" ngModel maxlength="20" type="text" required required placeholder="Enter car_price"
+          oninvalid="this.setCustomValidity('The field cannot be empty')" oninput="this.setCustomValidity('')" >
         </div>
       </div>
       <div class="form-group">
         <label for="year_of_prod">Year Of Prod</label>
         <div class="input-group">
-          <input id="year_of_prod" class="form-control" name="year_of_prod" ngModel >
+          <input id="year_of_prod" class="form-control" name="year_of_prod" ngModel maxlength="4" pattern="[0-9]{4}"
+          type="text" required required placeholder="Enter year_of_prod" oninvalid="this.setCustomValidity('The field cannot be empty. field must have 4 digit')"
+          oninput="this.setCustomValidity('')" >
         </div>
       </div>
       <div class="form-group">
         <label for="Vin">Vin</label>
         <div class="input-group">
-          <input id="vin" class="form-control" name="vin_number" ngModel >
+          <input id="vin" class="form-control" name="vin_number" ngModel maxlength="12" type="text" pattern="[0-9]{12}" 
+          required required placeholder="Enter vin" oninvalid="this.setCustomValidity('The field cannot be empty. Vin must have 12 digit')"
+          oninput="this.setCustomValidity('')" >
         </div>
       </div>
       <div class="modal-footer">

@@ -1,15 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 
 
-export class car {
+
+export class carSeller {
   constructor(
-    public id: number,
+    public id_sller_car: number,
     public brand: string,
     public model: string,
-    public car_price: number,
+    public price: number,
+    public vin_number: number,
+    public sale_date: Date,
     public year_of_prod: number,
-    public date_sale: Date
   ){}
 }
 
@@ -20,11 +23,19 @@ export class car {
 })
 export class RealizedComponent implements OnInit {
 
-  Car: car[];
+  CarSeller: carSeller[];
 
-  constructor() { }
+  constructor(private httpClient:HttpClient) { }
 
   ngOnInit(): void {
+    this.getSellerCar();
   }
 
+  getSellerCar(){
+    this.httpClient.get<any>('http://localhost:8080/carSeller').subscribe(
+      response => {
+        this.CarSeller = response;
+      }
+    );
+  }
 }

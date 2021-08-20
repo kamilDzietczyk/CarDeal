@@ -85,11 +85,12 @@ export class UsersComponent implements OnInit {
         this.message = "Email exist"
       }
     }
+    
     if(count>0){
       this.modalService.dismissAll();
     }else{
       const url = 'http://localhost:8080//users/add';
-    this.httpClient.post(url, f.value)
+      this.httpClient.post(url, f.value)
       .subscribe((result) => {
         this.ngOnInit(); 
       });
@@ -125,8 +126,7 @@ export class UsersComponent implements OnInit {
   });
   }
   
-  onSave() {
-    console.log("Jaszczur fajo");   
+  onSave() { 
   const editURL = 'http://localhost:8080//users/' + this.editForm.value.id + '/edit';
   this.httpClient.put(editURL, this.editForm.value)
     .subscribe((results) => {
