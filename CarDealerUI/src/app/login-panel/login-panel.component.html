@@ -2,6 +2,10 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="/register">Register</a>
+</nav>
+
 
 <div class="wrapper fadeInDown">
   <div id="formContent">
@@ -11,9 +15,10 @@
     </div>
 
     <!-- Login Form -->
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+    <form #f="ngForm" (ngSubmit)="ShowUser(f)">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" ngModel>
+      <input type="text" id="password" class="fadeIn third" name="password" placeholder="password" ngModel>
+      <h1>{{message}}</h1>
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 

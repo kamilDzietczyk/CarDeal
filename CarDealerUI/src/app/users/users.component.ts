@@ -11,7 +11,8 @@ export class user {
     public name: string,
     public login: string,
     public password: string,
-    public email: string
+    public email: string,
+    public is_admin: number
   ){}
 }
 
@@ -117,6 +118,7 @@ export class UsersComponent implements OnInit {
    backdrop: 'static',
    size: 'lg'
  });
+ 
  this.editForm.patchValue( {
   id: User.id,
   name: User.name,

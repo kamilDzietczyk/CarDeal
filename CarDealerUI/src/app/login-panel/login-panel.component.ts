@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 
 export class user {
@@ -20,8 +23,10 @@ export class user {
 export class LoginPanelComponent implements OnInit {
 
   User: user[];
+  message: string ="";
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient,
+              private route:Router) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -31,10 +36,25 @@ export class LoginPanelComponent implements OnInit {
     this.httpClient.get<any>('http://localhost:8080/users').subscribe(
       response => {
         this.User = response;
-        console.log(response);
       }
     );
-    
+  }
+
+  ShowUser(f:NgForm){
+    var count =0;
+    for(var u of this.User){
+      if(f.value.login+""+f.value.password === u.login+""+u.password){
+        this.message ="";
+        this.route.navigate(['/home'])
+        
+      }else{
+        this.message = "User not found. Please Regitster";
+        count = 0;
+        console.log(f.value.login+""+f.value.password);
+        console.log(u.login+""+u.password);
+      }
+    }
+    console.log(count);
     
   }
 }

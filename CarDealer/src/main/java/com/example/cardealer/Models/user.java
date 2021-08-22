@@ -12,6 +12,15 @@ public class user {
     String login;
     String password;
     String email;
+    int is_admin;
+
+    public int getIs_admin() {
+        return is_admin;
+    }
+
+    public void setIs_admin(int is_admin) {
+        this.is_admin = is_admin;
+    }
 
     public int getId() {
         return id;
