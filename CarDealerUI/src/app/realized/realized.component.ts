@@ -13,6 +13,7 @@ export class carSeller {
     public vin_number: number,
     public sale_date: Date,
     public year_of_prod: number,
+    public owner_id:number = 0
   ){}
 }
 

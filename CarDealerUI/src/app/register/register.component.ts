@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -27,7 +28,8 @@ export class RegisterComponent implements OnInit {
   message: string;
 
   constructor(private modalService: NgbModal,
-              private httpClient:HttpClient) { }
+              private httpClient:HttpClient,
+              private route:Router) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -44,12 +46,10 @@ export class RegisterComponent implements OnInit {
   onSubmit(f: NgForm) {
     var count = 0
     for(var u of this.User ){
-      if(f.value.name === u.name && f.value.email === u.email ){
+      if((f.value.name === u.name && f.value.email === u.email)||(f.value.email === u.email)){
         count ++
         this.message = "User exist"
-      }else if(f.value.email === u.email){
-        count ++
-        this.message = "Email exist"
+        f.reset(); 
       }
     }
     if(count>0){
@@ -58,10 +58,11 @@ export class RegisterComponent implements OnInit {
       const url = 'http://localhost:8080//users/add';
       this.httpClient.post(url, f.value)
       .subscribe((result) => {
-        this.ngOnInit(); 
+        this.ngOnInit();
       });
-      this.message = ""
-      this.modalService.dismissAll();
+      f.reset() 
+      this.message = ""      
+      this.route.navigate([''])
     }
   }
 

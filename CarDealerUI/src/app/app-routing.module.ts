@@ -6,6 +6,8 @@ import { CarComponent } from './car/car.component';
 import { RealizedComponent } from './realized/realized.component';
 import {LoginPanelComponent} from './login-panel/login-panel.component';
 import { RegisterComponent } from './register/register.component';
+import { UserComponentComponent } from './user-component/user-component.component';
+import { MyCarComponent } from './my-car/my-car.component';
 
 
 const routes: Routes = [
@@ -15,7 +17,9 @@ const routes: Routes = [
   {path: 'realized', component: RealizedComponent},
   {path: '', component: LoginPanelComponent},
   {path: 'login', component: LoginPanelComponent},
-  {path: 'register', component:RegisterComponent}
+  {path: 'register', component:RegisterComponent},
+  {path: 'userHome', component:UserComponentComponent},
+  {path: 'mycar', component:MyCarComponent}
 ];
 
 @NgModule({

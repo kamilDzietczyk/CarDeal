@@ -11,7 +11,8 @@ export class user {
     public name: string,
     public login: string,
     public password: string,
-    public email: string
+    public email: string,
+    public is_admin: number
   ){}
 }
 
@@ -40,13 +41,17 @@ export class LoginPanelComponent implements OnInit {
     );
   }
 
-  ShowUser(f:NgForm){
+  LoginUser(f:NgForm){
     var count =0;
     for(var u of this.User){
       if(f.value.login+""+f.value.password === u.login+""+u.password){
+        var id = u.id;
         this.message ="";
-        this.route.navigate(['/home'])
-        
+        if(u.is_admin==1){
+          this.route.navigate(['/home'])
+        }else{
+          this.route.navigate(['/userHome'],{state:{data:{id}}})
+        }
       }else{
         this.message = "User not found. Please Regitster";
         count = 0;

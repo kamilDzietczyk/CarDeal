@@ -12,6 +12,8 @@ import { CarComponent } from './car/car.component';
 import { RealizedComponent } from './realized/realized.component';
 import { LoginPanelComponent } from './login-panel/login-panel.component';
 import { RegisterComponent } from './register/register.component';
+import { UserComponentComponent } from './user-component/user-component.component';
+import { MyCarComponent } from './my-car/my-car.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { RegisterComponent } from './register/register.component';
     CarComponent,
     RealizedComponent,
     LoginPanelComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserComponentComponent,
+    MyCarComponent
   ],
   imports: [
     BrowserModule,

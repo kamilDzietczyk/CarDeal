@@ -10,7 +10,8 @@ export class car {
     public model: string,
     public car_price: number,
     public year_of_prod: number,
-    public vin_number: number
+    public vin_number: number,
+    public owner_id:number = 0
   ){}
 }
 
