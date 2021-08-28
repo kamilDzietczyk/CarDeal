@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { Router } from '@angular/router'; 
 
 
 export class user {
@@ -16,6 +15,13 @@ export class user {
   ){}
 }
 
+export class TempId{
+  constructor(
+    public idtemporary_Id:number,
+    public temp_Id:number
+  ){}
+}
+
 @Component({
   selector: 'app-login-panel',
   templateUrl: './login-panel.component.html',
@@ -25,12 +31,18 @@ export class LoginPanelComponent implements OnInit {
 
   User: user[];
   message: string ="";
+  editForm: FormGroup;
 
   constructor(private httpClient:HttpClient,
-              private route:Router) { }
+              private route:Router,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.getUsers();
+    this.editForm = this.formBuilder.group({
+        idtemporary_Id:[''],
+        temp_Id:['']
+    })
   }
 
   getUsers(){
@@ -41,6 +53,20 @@ export class LoginPanelComponent implements OnInit {
     );
   }
 
+  UpdateId(id:number){
+    this.editForm.patchValue({
+      idtemporary_Id:1,
+      temp_Id:id
+    });
+    const editURL = 'http://localhost:8080/tempId/1/edit';
+    this.httpClient.put(editURL, this.editForm.value)
+    .subscribe((results) => {
+      this.ngOnInit();
+    });
+  }
+
+  
+
   LoginUser(f:NgForm){
     var count =0;
     for(var u of this.User){
@@ -50,16 +76,13 @@ export class LoginPanelComponent implements OnInit {
         if(u.is_admin==1){
           this.route.navigate(['/home'])
         }else{
-          this.route.navigate(['/userHome'],{state:{data:{id}}})
+          this.route.navigate(['/userHome'])
+          this.UpdateId(u.id)
         }
       }else{
         this.message = "User not found. Please Regitster";
         count = 0;
-        console.log(f.value.login+""+f.value.password);
-        console.log(u.login+""+u.password);
       }
     }
-    console.log(count);
-    
   }
 }

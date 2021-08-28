@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 
 export class car {
@@ -21,14 +23,22 @@ export class car {
 })
 export class UserComponentComponent implements OnInit {
 
-  Car:car[]
+  Car:car[];
 
   constructor(private httpClient:HttpClient,
-              private route:Router) { }
+              private modalService: NgbModal) {}
 
   ngOnInit(): void {
     this.getCar();
-    console.log(history.state.data);
+  }
+  
+
+  openBuy(targetModal) {
+    this.modalService.open(targetModal, {
+     centered: true,
+     backdrop: 'static',
+     size: 'lg'
+    });
   }
 
   getCar(){
@@ -38,4 +48,5 @@ export class UserComponentComponent implements OnInit {
       }
     );
   }
+  
 }

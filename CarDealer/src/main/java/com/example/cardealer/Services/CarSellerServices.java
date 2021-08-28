@@ -1,6 +1,5 @@
 package com.example.cardealer.Services;
 
-import com.example.cardealer.Models.Car;
 import com.example.cardealer.Models.CarSeller;
 import com.example.cardealer.Repos.CarSellerRepos;
 import org.springframework.beans.factory.annotation.Autowired;

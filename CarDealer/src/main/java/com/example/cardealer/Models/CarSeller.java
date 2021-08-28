@@ -22,6 +22,15 @@ public class CarSeller {
     @JsonFormat(pattern="yyyy-MM-dd")
     Date sale_date;
     int year_of_prod;
+    int owner_id;
+
+    public int getOwner_id() {
+        return owner_id;
+    }
+
+    public void setOwner_id(int owner_id) {
+        this.owner_id = owner_id;
+    }
 
     public int getYear_of_prod() {
         return year_of_prod;

@@ -23,10 +23,28 @@
           <td><span>{{car.year_of_prod}}</span></td>
           <td><span>{{car.vin_number}}</span></td>
           <td>
-              <button class="btn btn-sm btn-info">
+              <button class="btn btn-sm btn-info" (click)="openBuy(contentBuy)">
               <i class="fa fa-car"></i> BUY</button>
             </td>
         </tr>
         </tbody>
       </table>
   </div>
+
+  <ng-template #contentBuy let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Buy Car</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h2 class="text-center">Do you want to buy it ?</h2>
+      <div class="border text-center"> 
+        <button data-dismiss="modal" class="btn btn-success" >Yes, Buy!</button> 
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+    </div>
+  </ng-template>

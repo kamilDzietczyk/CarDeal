@@ -103,7 +103,7 @@ export class CarComponent implements OnInit {
     document.getElementById("mod")?.setAttribute('value', Car.model);
     document.getElementById("pri")?.setAttribute('value', Car.car_price.toString());
     document.getElementById("yea")?.setAttribute('value', Car.year_of_prod.toString());
-    document.getElementById("vin")?.setAttribute('value', Car.vin_number.toString());
+    document.getElementById("vin_num")?.setAttribute('value', Car.vin_number.toString());
  }
 
  openEdit(targetModal, Car: car) {

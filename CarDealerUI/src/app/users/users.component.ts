@@ -42,7 +42,8 @@ export class UsersComponent implements OnInit {
       name: [''],
       login: [''],
       password: [''],
-      email: ['']
+      email: [''],
+      is_admin:['']
     } );
     this.deleteId = this.formBuilder.group({
       id:['']
@@ -110,6 +111,7 @@ export class UsersComponent implements OnInit {
     document.getElementById("log")?.setAttribute('value', User.login);
     document.getElementById("pass")?.setAttribute('value', User.password);
     document.getElementById("ema")?.setAttribute('value', User.email);
+    document.getElementById("is_adm")?.setAttribute('value', User.is_admin.toString());
  }
 
  openEdit(targetModal, User: user) {
@@ -124,7 +126,8 @@ export class UsersComponent implements OnInit {
   name: User.name,
   login: User.login,
   password: User.password,
-  email: User.email
+  email: User.email,
+  is_admin: User.is_admin
   });
   }
   
@@ -142,13 +145,9 @@ export class UsersComponent implements OnInit {
    centered: true,
    backdrop: 'static',
    size: 'lg'
- });
- this.deleteId.patchValue( {
+  });
+  this.deleteId.patchValue( {
   id: User.id,
-  name: User.name,
-  login: User.login,
-  password: User.password,
-  email: User.email
   });
   }
 
