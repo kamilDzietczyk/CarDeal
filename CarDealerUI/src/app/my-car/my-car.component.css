@@ -1,0 +1,13 @@
+.container{
+    margin-top: 3%;
+    width: 50%;
+    height: 50%;
+}
+
+th, td {
+  text-align: center;
+}
+
+table .btn{
+  margin: 2px;
+}

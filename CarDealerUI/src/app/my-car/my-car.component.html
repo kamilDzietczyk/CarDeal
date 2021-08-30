@@ -1,1 +1,29 @@
-<p>my-car works!</p>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="/login">Log out</a>
+    <a class="navbar-brand" href="/userHome">Home</a>
+</nav>
+
+<div class="container">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Car price</th>
+        <th>Year of production</th>
+        <th>Vin</th>
+        <th>Buy date</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let car of CarSeller">
+            <td><span>{{car.brand}}</span></td>
+            <td><span>{{car.model}}</span></td>
+            <td><span>{{car.price}}</span></td>
+            <td><span>{{car.year_of_prod}}</span></td>
+            <td><span>{{car.vin_number}}</span></td>
+            <td><span>{{car.sale_date}}</span></td>
+      </tr>
+      </tbody>
+    </table>
+</div>

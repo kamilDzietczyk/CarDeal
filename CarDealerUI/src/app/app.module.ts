@@ -14,6 +14,7 @@ import { LoginPanelComponent } from './login-panel/login-panel.component';
 import { RegisterComponent } from './register/register.component';
 import { UserComponentComponent } from './user-component/user-component.component';
 import { MyCarComponent } from './my-car/my-car.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { MyCarComponent } from './my-car/my-car.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

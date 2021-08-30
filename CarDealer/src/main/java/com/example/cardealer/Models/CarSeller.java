@@ -19,10 +19,17 @@ public class CarSeller {
     String model;
     long price;
     long vin_number;
-    @JsonFormat(pattern="yyyy-MM-dd")
-    Date sale_date;
+    String sale_date;
     int year_of_prod;
     int owner_id;
+
+    public String getSale_date() {
+        return sale_date;
+    }
+
+    public void setSale_date(String sale_date) {
+        this.sale_date = sale_date;
+    }
 
     public int getOwner_id() {
         return owner_id;
@@ -38,14 +45,6 @@ public class CarSeller {
 
     public void setYear_of_prod(int year_of_prod) {
         this.year_of_prod = year_of_prod;
-    }
-
-    public Date getSale_date() {
-        return sale_date;
-    }
-
-    public void setSale_date(Date sale_date) {
-        this.sale_date = sale_date;
     }
 
     public int getId_sller_car() {

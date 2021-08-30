@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="/login">Log out</a>
     <a class="navbar-brand" href="/mycar">My car</a>
-  </nav>
+</nav>
 
   <div class="container">
       <table class="table table-bordered table-striped">
@@ -23,7 +23,7 @@
           <td><span>{{car.year_of_prod}}</span></td>
           <td><span>{{car.vin_number}}</span></td>
           <td>
-              <button class="btn btn-sm btn-info" (click)="openBuy(contentBuy)">
+              <button class="btn btn-sm btn-info" (click)="openBuy(contentBuy, car)">
               <i class="fa fa-car"></i> BUY</button>
             </td>
         </tr>
@@ -41,7 +41,7 @@
     <div class="modal-body">
       <h2 class="text-center">Do you want to buy it ?</h2>
       <div class="border text-center"> 
-        <button data-dismiss="modal" class="btn btn-success" >Yes, Buy!</button> 
+        <button data-dismiss="modal" class="btn btn-success" (click)="onBuy()" >Yes, Buy!</button> 
       </div>
     </div>
     <div class="modal-footer">
