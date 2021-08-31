@@ -68,6 +68,7 @@ export class LoginPanelComponent implements OnInit {
   
 
   LoginUser(f:NgForm){
+    this.getUsers();
     var count =0;
     for(var u of this.User){
       if(f.value.login+""+f.value.password === u.login+""+u.password){

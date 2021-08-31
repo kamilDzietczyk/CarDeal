@@ -141,7 +141,7 @@
     </div>
   </ng-template>
 
-  <ng-template #contentEdit let-modal>
+  <ng-template #contentEdit  let-modal>
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Edit User</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -149,7 +149,7 @@
       </button>
     </div>
     <div class="modal-body">
-      <form [formGroup]="editForm" novalidate>
+      <form [formGroup]="editForm" ngNativeValidate >
         <div class="form-group">
           <label for="name">Name</label>
           <div class="input-group">
